@@ -1,4 +1,4 @@
-//Match control Flow
+//1)Match control Flow
 
 use std::io;
 
@@ -14,5 +14,53 @@ fn main() {
         _ => println!("I can't find a greeting, good bye."),
     }
 }
+
+//2)Associated Functions and constructors
+
+struct User {
+    username: String,
+    email: String,
+    uri: String,
+    active: bool,
+}
+
+impl User {
+    fn new(username: String, email: String, uri: String) -> Self {
+        Self {
+            username,
+            email,
+            uri,
+            active: true,
+        }
+    }
+    fn deactivate(&mut self) {
+        self.active = false;
+    }
+}
+
+fn main() {
+    let mut new_user = User::new(
+        String::from("deepak"),
+        String::from("deepak@example.com"),
+        String::from("https://deepak.com"),
+    );
+    println!("Hello, {}!", new_user.username);
+    println!("Account {} status is: {}", new_user.username, new_user.active);
+    new_user.deactivate();
+    println!("Account {} status is: {}", new_user.username, new_user.active);
+}
+
+
+fn get_item(index: usize) {
+    //let index = 3; // this looks like an unsigned integer, but it's actually a usize
+    let vec = vec![1, 2, 3, 4, 5];
+
+    // Retrieve a value at a specific index
+    let value = vec.get(index).unwrap();
+
+    // print the value
+    println!("The value at index {} is {:?}", index, value);
+}
+
 
 
